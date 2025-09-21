@@ -675,6 +675,16 @@ class EarningsScanner:
         options.add_argument('--js-flags=--expose-gc')
         options.add_argument('--disable-dev-shm-usage')
         
+        # Disable notifications and popups
+        prefs = {
+            "profile.default_content_setting_values.notifications": 2,
+            "profile.default_content_setting_values.popups": 2,
+            "profile.default_content_setting_values.automatic_downloads": 1,
+            "profile.default_content_setting_values.media_stream": 2,
+            "profile.default_content_setting_values.geolocation": 2
+        }
+        options.add_experimental_option("prefs", prefs)
+
         # Additional memory optimization
         options.add_argument('--disable-browser-side-navigation')
         options.add_argument('--disable-3d-apis')
